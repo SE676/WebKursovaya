@@ -1,0 +1,24 @@
+﻿@model WebKursovaya.Models.Полы
+
+@{
+    ViewData["Title"] = "Подробности записи";
+}
+
+<h1>Подробности</h1>
+
+<div>
+    <h4>пола</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Пол)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Пол)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Код_пола" class="btn btn-primary">Редактировать</a> |
+    <a asp-action="Index" class="btn btn-dark">Вернуться к списку</a>
+</div>

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<WebKursovaya.Models.Категории_ТС>
+
+@{
+    ViewData["Title"] = "Категории ТС";
+}
+
+<h1>Категории ТС</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Создать новую запись</a>
+</p>
+<div class="sptable">
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Наименование_категории_ТС)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Наименование_категории_ТС)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.Код_категории_ТС" class="btn btn-primary">Редактировать</a> |
+                    <a asp-action="Details" asp-route-id="@item.Код_категории_ТС" class="btn btn-success">Подробности</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Код_категории_ТС" class="btn btn-danger">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>

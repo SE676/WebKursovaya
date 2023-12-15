@@ -1,0 +1,63 @@
+﻿@model IEnumerable<WebKursovaya.Models.Формы_003_В_у>
+
+@{
+    ViewData["Title"] = "Медицинские справки";
+}
+
+
+<h1>Медицинские справки</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Создать новую запись</a>
+</p>
+<div class="sptable">
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Заявитель)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Мед_организация)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Категория)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Дата_выдачи)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Сведения_о_медицинских_противопоказаниях)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.ЗаявительФИО)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Мед_организация.Название_медицинской_организации)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Категория.Наименование_категории_ТС)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Дата_выдачи)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Сведения_о_медицинских_противопоказаниях)
+                </td>
+            <td>
+                  <a asp-action="Edit" asp-route-id="@item.Номер_формы_003_В_у" class="btn btn-primary">Редактировать</a> |
+                  <a asp-action="Details" asp-route-id="@item.Номер_формы_003_В_у" class="btn btn-success">Подробности</a> |
+                  <a asp-action="Delete" asp-route-id="@item.Номер_формы_003_В_у" class="btn btn-danger">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>

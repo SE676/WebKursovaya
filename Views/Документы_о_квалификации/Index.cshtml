@@ -1,0 +1,56 @@
+﻿@model IEnumerable<WebKursovaya.Models.Документы_о_квалификации>
+
+@{
+    ViewData["Title"] = "Документы о квалификации";
+}
+
+<h1>Документы о квалификации</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Создать новую запись</a>
+</p>
+<div class="sptable">
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Заявитель)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Автошкола)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Категория)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Дата_выдачи)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ЗаявительФИО)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Автошкола.Название_автошколы)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Категория.Наименование_категории_ТС)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Дата_выдачи)
+                </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.Номер_документа_о_квалификации" class="btn btn-primary">Редактировать</a> |
+                    <a asp-action="Details" asp-route-id="@item.Номер_документа_о_квалификации" class="btn btn-success">Подробности</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Номер_документа_о_квалификации" class="btn btn-danger">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>

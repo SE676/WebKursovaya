@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WebKursovaya.Models.Заявления>
+
+@{
+    ViewData["Title"] = "Заявления";
+}
+
+<h1>Заявления</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Создать новую запись</a>
+</p>
+<div class="sptable">
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Заявитель)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Вид_услуги)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Виды_статусов_заявлений)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ЗаявительФИО)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Вид_услуги.Название_вида_услуги)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Виды_статусов_заявлений.Название_статуса)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.Номер_заявления" class="btn btn-primary">Редактировать</a> |
+                    <a asp-action="Details" asp-route-id="@item.Номер_заявления" class="btn btn-success">Подробности</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Номер_заявления" class="btn btn-danger">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>

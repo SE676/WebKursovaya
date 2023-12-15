@@ -1,0 +1,84 @@
+﻿@model WebKursovaya.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Авторизация";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Стили для центрирования заголовка */
+        h2 {
+            text-align: center;
+        }
+
+        .center-site {
+            position: center;
+            margin: -100px auto 0 auto;
+        }
+
+        .form-container {
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #87bbf5;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        }
+
+      
+
+    </style>
+</head>
+<body>
+    <div class="center-site">
+        <h2>Вход</h2>
+        <form asp-action="Login" asp-controller="Account" asp-anti-forgery="true" class="mt-4">
+
+            <div class="form-container">
+
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Logo_of_the_traffic_police_of_Russia.svg/439px-Logo_of_the_traffic_police_of_Russia.svg.png" class="img-fluid mb-4" style="max-width: 200px;" />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Username" class="form-label" style="font-size: 18px;">Введите логин</label>
+                    <input type="text" asp-for="Username" class="form-control" />
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password" class="form-label" style="font-size: 18px;">Введите пароль</label>
+                    <div class="input-group">
+                        <input asp-for="Password" type="password" class="form-control" id="passwordInput" />
+                        <div class="input-group-append">
+                            <span class="input-group-text" style="padding: 0; cursor: pointer;"
+                                  onclick="togglePasswordVisibility()">
+                                <img src="https://img.freepik.com/free-icon/eye_318-32631.jpg?size=626&ext=jpg" style="width: auto; max-width: 35px;">
+                            </span>
+                        </div>
+                    </div>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Войти</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <script>
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById('passwordInput');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+            } else {
+                passwordInput.type = 'password';
+            }
+        }
+    </script>
+</body>
+</html>

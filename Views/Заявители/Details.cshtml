@@ -1,0 +1,48 @@
+﻿@model WebKursovaya.Models.Заявители
+
+@{
+    ViewData["Title"] = "Подробности записи";
+}
+
+<h1>Подробности</h1>
+
+<div>
+    <h4>записи о заявителе</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Фамилия)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Фамилия)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Имя)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Имя)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Отчество)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Отчество)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Дата_рождения)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Дата_рождения)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Пол)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Пол.Пол)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Код_заявителя" class="btn btn-primary">Редактировать</a> |
+    <a asp-action="Index" class="btn btn-dark">Вернуться к списку</a>
+</div>

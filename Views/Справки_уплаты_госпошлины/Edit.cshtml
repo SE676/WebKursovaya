@@ -1,0 +1,48 @@
+﻿@model WebKursovaya.Models.Справки_уплаты_госпошлины
+
+@{
+    ViewData["Title"] = "Редактирование записи";
+}
+
+<h1>Редактировать</h1>
+
+<h4>запись о справке уплаты госпошлины</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Номер_справки_уплаты_госпошлины" />
+            <div class="form-group">
+                <label asp-for="Заявитель" class="control-label"></label>
+                <select id="ddlApplicant" asp-for="Код_заявителя" class="form-control" asp-items="@ViewBag.Код_заявителя"></select>
+                <span asp-validation-for="Код_заявителя" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Дата" class="control-label"></label>
+                <select id="ddlСost" asp-for="Код_стоимости" class="form-control" asp-items="@ViewBag.Код_стоимости"></select>
+                <span asp-validation-for="Код_стоимости" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-dark">Вернуться к списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#ddlApplicant").select2();
+            $("#ddlCost").select2();
+        });
+    </script>
+}

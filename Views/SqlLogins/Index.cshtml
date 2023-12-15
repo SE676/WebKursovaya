@@ -1,0 +1,46 @@
+﻿@model List<WebKursovaya.Models.sql_logins>
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid #dddddd;
+        padding: 12px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+</style>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Password Hash</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var logins in Model)
+        {
+            <tr>
+                <td>@logins.name</td>
+                <td>@logins.password_hash</td>
+            </tr>
+        }
+    </tbody>
+</table>

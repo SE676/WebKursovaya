@@ -1,0 +1,82 @@
+﻿@model IEnumerable<WebKursovaya.Models.Экзамены>
+
+@{
+    ViewData["Title"] = "Экзамены";
+}
+
+
+<h1>Экзамены</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Создать новую запись</a>
+</p>
+
+<form asp-controller="Экзамены" asp-action="FilterByDate" method="get">
+    <table border="0" cellspacing="5" cellpadding="5">
+        <tbody>
+            <tr>
+                <td>Дата начала:</td>
+                <td><input type="date" id="startDate" name="startDate" value="@ViewBag.StartDate"></td>
+            </tr>
+            <tr>
+                <td>Дата окончания:</td>
+                <td><input type="date" id="endDate" name="endDate" value="@ViewBag.EndDate"></td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="submit" class="btn btn-success">Применить фильтр</button>
+    <a asp-controller="Экзамены" asp-action="FilterByDate" class="btn btn-secondary">Сбросить фильтр</a>
+    <a asp-controller="Экзамены" asp-action="ReportByMonth" asp-route-startDate="@ViewBag.StartDate" asp-route-endDate="@ViewBag.EndDate" class="btn btn-info">Открыть график</a>
+</form>
+<div class="sptable">
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Заявитель)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Сотрудник)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Категория)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Дата_сдачи)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Результат_сдачи)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.ЗаявительФИО)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.СотрудникФИО)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Категория.Наименование_категории_ТС)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Дата_сдачи)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Результат_сдачи)
+                </td>
+            <td>
+                  <a asp-action="Edit" asp-route-id="@item.Код_экзамена" class="btn btn-primary">Редактировать</a> |
+                  <a asp-action="Details" asp-route-id="@item.Код_экзамена" class="btn btn-success">Подробности</a> |
+                  <a asp-action="Delete" asp-route-id="@item.Код_экзамена" class="btn btn-danger">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>

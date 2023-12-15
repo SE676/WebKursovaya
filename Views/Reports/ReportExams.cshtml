@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Отчет по экзаменам";
+}
+
+<h2>Отчет по экзаменам</h2>
+
+<canvas id="myChart" width="400" height="200"></canvas>
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var months = @Html.Raw(Json.Serialize(ViewBag.Months));
+        var passedCounts = @Html.Raw(Json.Serialize(ViewBag.PassedCounts));
+        var failedCounts = @Html.Raw(Json.Serialize(ViewBag.FailedCounts));
+        var passedColors = @Html.Raw(Json.Serialize(ViewBag.PassedColors));
+        var failedColors = @Html.Raw(Json.Serialize(ViewBag.FailedColors));
+
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: months,
+                datasets: [
+                    {
+                        label: 'Сдано',
+                        data: passedCounts,
+                        backgroundColor: passedColors,
+                        borderColor: 'green',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Не сдано',
+                        data: failedCounts,
+                        backgroundColor: failedColors,
+                        borderColor: 'red',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        precision: 0
+                    }
+                }
+            }
+        });
+    </script>
+}

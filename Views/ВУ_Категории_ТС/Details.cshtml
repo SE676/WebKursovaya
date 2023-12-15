@@ -1,0 +1,30 @@
+﻿@model WebKursovaya.Models.ВУ_Категории_ТС
+
+@{
+    ViewData["Title"] = "Подробности записи";
+}
+
+<h1>Подробности</h1>
+
+<div>
+    <h4>записи о ВУ</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ВУ)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ВУсн)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Категория)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Категория.Наименование_категории_ТС)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Код" class="btn btn-primary">Редактировать</a> |
+    <a asp-action="Index" class="btn btn-dark">Вернуться к списку</a>
+</div>

@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Аудит пользователей";
+}
+
+<style>
+    .btn-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+        .btn-container a {
+            width: 200px; /* Задаем одинаковую ширину для кнопок */
+            margin-bottom: 10px; /* Отступ между кнопками */
+        }
+</style>
+
+<div class="text-center">
+    <h1 class="display-4">Аудит пользователей</h1>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Emblem_of_the_traffic_police_of_Russia.svg/363px-Emblem_of_the_traffic_police_of_Russia.svg.png" style="max-width: 200px;">
+
+    <p></p>
+
+    <div class="btn-container">
+        <a href="https://localhost:7136/SqlLogins" target="_blank" class="btn btn-primary">Логины</a>
+        <a href="https://localhost:7136/Audits" target="_blank" class="btn btn-primary">Аудит</a>
+    </div>
+</div>

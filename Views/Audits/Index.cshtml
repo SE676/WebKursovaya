@@ -1,0 +1,79 @@
+﻿@model List<WebKursovaya.Models.Log>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        
+        body {
+            text-align: center;
+        }
+
+        tbody tr.error-row td {
+            background-color: #FFCCCC; /* Цвет для строк с ошибками */
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="content">
+        <h1>Аудит</h1>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Emblem_of_the_traffic_police_of_Russia.svg/363px-Emblem_of_the_traffic_police_of_Russia.svg.png" style="max-width: 200px;">
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Время события</th>
+                <th>Имя пользователя</th>
+                <th>Роль пользователя</th>
+                <th>Таблица БД</th>
+                <th>Действие</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var audits in Model)
+            {
+                <tr>
+                    <td>@audits.Дата</td>
+                    <td>@audits.Имя_пользователя</td>
+                    <td>@audits.Роль</td>
+                    <td>@audits.Таблица</td>
+                    <td>@audits.Действие</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

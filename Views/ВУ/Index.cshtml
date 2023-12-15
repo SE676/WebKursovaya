@@ -1,0 +1,85 @@
+﻿@model IEnumerable<WebKursovaya.Models.ВУ>
+
+@{
+    ViewData["Title"] = "ВУ";
+}
+
+<h1>ВУ</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Создать новую запись</a>
+</p>
+
+<form asp-controller="ВУ" asp-action="FilterByDate" method="get">
+    <table border="0" cellspacing="5" cellpadding="5">
+        <tbody>
+            <tr>
+                <td>Дата начала:</td>
+                <td><input type="date" id="startDate" name="startDate" value="@ViewBag.StartDate"></td>
+            </tr>
+            <tr>
+                <td>Дата окончания:</td>
+                <td><input type="date" id="endDate" name="endDate" value="@ViewBag.EndDate"></td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="submit" class="btn btn-success">Применить фильтр</button>
+    <a asp-controller="ВУ" asp-action="FilterByDate" class="btn btn-secondary">Сбросить фильтр</a>
+    <a asp-controller="ВУ" asp-action="ReportByVUStatus" asp-route-startDate="@ViewBag.StartDate" asp-route-endDate="@ViewBag.EndDate" class="btn btn-info">Открыть график</a>
+</form>
+<div class="sptable">
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Заявитель)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Серия_ВУ)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Номер_ВУ)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Дата_выдачи)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Дата_окончания_срока_действия)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Виды_статусов_ВУ)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                    @Html.DisplayFor(modelItem => item.ЗаявительФИО)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Серия_ВУ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Номер_ВУ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Дата_выдачи)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Дата_окончания_срока_действия)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Виды_статусов_ВУ.Название_статуса)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.Код_ВУ" class="btn btn-primary">Редактировать</a> |
+                    <a asp-action="Details" asp-route-id="@item.Код_ВУ" class="btn btn-success">Подробности</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Код_ВУ" class="btn btn-danger">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>

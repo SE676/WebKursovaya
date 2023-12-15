@@ -1,0 +1,55 @@
+﻿@model IEnumerable<WebKursovaya.Models.Посещения>
+
+@{
+    ViewData["Title"] = "Посещения";
+}
+
+<h1>Посещения</h1>
+
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Фамилия)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Имя)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Отчество)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Дата_рождения)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Дата_посещения)
+            </th>     
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Фамилия)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Имя)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Отчество)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Дата_рождения)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Дата_посещения)
+                </td>
+                <td>
+                    <a asp-controller="Заявители" asp-action="Create" asp-route-id="@item.Код_посещения" class="btn btn-success">Добавить заявителя</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

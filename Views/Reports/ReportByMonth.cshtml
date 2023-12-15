@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Отчет по месяцам";
+}
+
+<h2>Отчет по месяцам</h2>
+
+<canvas id="myChart" width="400" height="200"></canvas>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var months = @Html.Raw(Json.Serialize(ViewBag.Months));
+        var counts = @Html.Raw(Json.Serialize(ViewBag.Counts));
+
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: months,
+                datasets: [{
+                    label: 'Количество записей',
+                    data: counts,
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        precision: 0
+                    }
+                }
+            }
+        });
+    </script>
+}

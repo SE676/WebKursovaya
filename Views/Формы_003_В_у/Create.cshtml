@@ -1,0 +1,60 @@
+﻿@model WebKursovaya.Models.Формы_003_В_у
+
+@{
+    ViewData["Title"] = "Создание записи";
+}
+
+<h1>Создать</h1>
+
+<h4>запись о мед. справке</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Заявитель" class="control-label"></label>
+                <select id="ddlApplicant" asp-for="Код_заявителя" class="form-control" asp-items="@ViewBag.Код_заявителя"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Мед_организация" class="control-label"></label>
+                <select id="ddlMed" asp-for="Код_медицинской_организации" class="form-control" asp-items="@ViewBag.Код_медицинской_организации"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Категория" class="control-label"></label>
+                <select id="ddlVehicleCategory" asp-for="Код_категории_ТС" class="form-control" asp-items="@ViewBag.Код_категории_ТС"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Дата_выдачи" class="control-label"></label>
+                <input asp-for="Дата_выдачи" class="form-control" />
+                <span asp-validation-for="Дата_выдачи" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Сведения_о_медицинских_противопоказаниях" class="control-label"></label>
+                <input asp-for="Сведения_о_медицинских_противопоказаниях" class="form-control" />
+                <span asp-validation-for="Сведения_о_медицинских_противопоказаниях" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Создать" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-dark">Вернуться к списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#ddlApplicant").select2();
+            $("#ddlMed").select2();
+            $("#ddlVehicleCategory").select2();
+        });
+    </script>
+}

@@ -1,0 +1,89 @@
+﻿@model WebKursovaya.Models.Посещения
+@{
+    ViewData["Title"] = "Подтверждение записи";
+}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Подтверждение записи на посещение организации</title>
+    <style>
+        /* Стили для улучшения внешнего вида формы */
+       
+
+        .confirmation-container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .confirmation-container h2 {
+                text-align: center;
+                margin-bottom: 20px;
+        }
+
+        .confirmation-message {
+            margin-bottom: 15px;
+        }
+
+        .document-list {
+            padding-left: 20px;
+        }
+
+        .document-list li {
+                list-style-type: disc;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+                background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="center-site">
+    <div class="confirmation-container">
+        <div class="confirmation-message">
+            <p>Вы были успешно записаны на следующую дату и время:</p>
+                <p><strong>Дата и время посещения:</strong> @Model.Дата_посещения.ToString("dd.MM.yyyy HH:mm")</p>
+            <p>Не забудьте взять с собой следующие документы:</p>
+            <ul class="document-list">
+                <li>Паспорт гражданина РФ</li>
+                <li>Справка об уплате госпошлины</li>
+                <li>Медицинская справка</li>
+                <li>Свидетельство об окончании автошколы (при первичном получении)</li>
+                <li>Водительское удостоверение (при наличии)</li>
+            </ul>
+        </div>
+        <form id="confirmationForm">
+            <input type="submit" value="OK">
+        </form>
+    </div>
+    </div>
+</body>
+</html>
+<script>
+    // Получаем форму по ее ID
+    var confirmationForm = document.getElementById("confirmationForm");
+
+    // Добавляем обработчик события отправки формы
+    confirmationForm.addEventListener("submit", function(event) {
+        // Предотвращаем стандартное поведение отправки формы
+        event.preventDefault();
+
+        // Выполняем перенаправление на страницу Home/Index
+        window.location.href = '/Home/Index'; // Укажите путь к вашему Home/Index
+    });
+</script>

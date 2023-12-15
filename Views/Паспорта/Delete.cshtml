@@ -1,0 +1,57 @@
+﻿@model WebKursovaya.Models.Паспорта
+
+@{
+    ViewData["Title"] = "Удаление записи";
+}
+
+<h1>Удаление</h1>
+
+<h3>Вы уверены что хотите удалить данную запись?</h3>
+<div>
+    <h4>Паспорта</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Серия_паспорта)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Серия_паспорта)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Номер_паспорта)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Номер_паспорта)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Дата_выдачи)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Дата_выдачи)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Кем_выдан)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Кем_выдан)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Адрес_прописки)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Адрес_прописки)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Заявитель)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ЗаявительФИО)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Код_паспорта" />
+        <input type="submit" value="Удалить" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-dark">Вернуться к списку</a>
+    </form>
+</div>

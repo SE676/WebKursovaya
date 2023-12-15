@@ -1,0 +1,37 @@
+﻿@model WebKursovaya.Models.Автошколы
+
+@{
+    ViewData["Title"] = "Подробности записи";
+}
+
+<h1>Подробности</h1>
+
+<div>
+    <h4>записи об автошколе</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Название_автошколы)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Название_автошколы)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Адрес_автошколы)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Адрес_автошколы)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email_автошколы)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email_автошколы)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Код_автошколы" class="btn btn-primary">Редактировать</a> |
+    <a asp-action="Index" class="btn btn-dark">Вернуться к списку</a>
+    
+</div>

@@ -1,0 +1,27 @@
+﻿@model WebKursovaya.Models.Должности
+
+@{
+    ViewData["Title"] = "Удаление записи";
+}
+
+<h1>Удаление</h1>
+
+<h3>Вы уверены что хотите удалить данную запись?</h3>
+<div>
+    <h4>Должности</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Название_должности)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Название_должности)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Код_должности" />
+        <input type="submit" value="Удалить" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-dark">Вернуться к списку</a>
+    </form>
+</div>

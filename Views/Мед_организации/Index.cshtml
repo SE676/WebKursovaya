@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WebKursovaya.Models.Мед_организации>
+
+@{
+    ViewData["Title"] = "Медицинские организации";
+}
+
+<h1>Медицинские организации</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Создать новую запись</a>
+</p>
+<div class="sptable">
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Название_медицинской_организации)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Адрес_медицинской_организации)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email_медицинской_организации)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Название_медицинской_организации)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Адрес_медицинской_организации)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email_медицинской_организации)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.Код_медицинской_организации" class="btn btn-primary">Редактировать</a> |
+                    <a asp-action="Details" asp-route-id="@item.Код_медицинской_организации" class="btn btn-success">Подробности</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Код_медицинской_организации" class="btn btn-danger">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>

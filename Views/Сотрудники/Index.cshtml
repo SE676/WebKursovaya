@@ -1,0 +1,57 @@
+﻿@model IEnumerable<WebKursovaya.Models.Сотрудники>
+
+@{
+    ViewData["Title"] = "Сотрудники";
+}
+
+
+
+<h1>Сотрудники</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Создать новую запись</a>
+</p>
+<div class="sptable">
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Фамилия)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Имя)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Отчество)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Должность)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Фамилия)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Имя)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Отчество)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Должность.Название_должности)
+            </td>
+            <td>
+                 <a asp-action="Edit" asp-route-id="@item.Код_сотрудника" class="btn btn-primary">Редактировать</a> |
+                 <a asp-action="Details" asp-route-id="@item.Код_сотрудника" class="btn btn-success">Подробности</a> |
+                 <a asp-action="Delete" asp-route-id="@item.Код_сотрудника" class="btn btn-danger">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>

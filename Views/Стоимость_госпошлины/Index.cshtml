@@ -1,0 +1,44 @@
+﻿@model IEnumerable<WebKursovaya.Models.Стоимость_госпошлины>
+
+@{
+    ViewData["Title"] = "Стоимость госпошлины";
+}
+
+
+<h1>Стоимость госпошлины</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Создать новую запись</a>
+</p>
+<div class="sptable">
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Дата)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Стоимость)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Дата)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Стоимость)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.Код_стоимости" class="btn btn-primary">Редактировать</a> |
+                    <a asp-action="Details" asp-route-id="@item.Код_стоимости" class="btn btn-success">Подробности</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Код_стоимости" class="btn btn-danger">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
