@@ -1,0 +1,48 @@
+﻿@model WebKursovaya.Models.Внутренние_экзамены
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Внутренние_экзамены</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+ 
+            <div class="form-group">
+                <label asp-for="Автошкола" class="control-label"></label>
+                <select id="ddlApplicant" asp-for="Код_автошколы" class="form-control" asp-items="@ViewBag.Код_автошколы"></select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Заявитель" class="control-label"></label>
+                <select id="ddlApplicant" asp-for="Код_заявителя" class="form-control" asp-items="@ViewBag.Код_заявителя"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Дата_внутреннего_экзамена" class="control-label"></label>
+                <input asp-for="Дата_внутреннего_экзамена" class="form-control" />
+                <span asp-validation-for="Дата_внутреннего_экзамена" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Результат_внутреннего_экзамена" class="control-label"></label>
+                <input asp-for="Результат_внутреннего_экзамена" class="form-control" />
+                <span asp-validation-for="Результат_внутреннего_экзамена" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

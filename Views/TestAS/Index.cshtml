@@ -1,0 +1,57 @@
+﻿@model IEnumerable<WebKursovaya.Models.TestAS>
+
+@{
+    ViewData["Title"] = "Списки";
+}
+
+<h1>Списки</h1>
+
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Название_автошколы)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Фамилия)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Имя)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Отчество)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Дата_сдачи)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Результат_сдачи)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Название_автошколы)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Фамилия)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Имя)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Отчество)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Дата_сдачи)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Результат_сдачи)
+                </td>           
+            </tr>
+        }
+    </tbody>
+</table>

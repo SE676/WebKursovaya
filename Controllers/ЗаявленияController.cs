@@ -168,6 +168,7 @@ namespace WebKursovaya.Controllers
             return View(заявления);
         }
 
+
         // GET: Заявления/Delete/5
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> Delete(int? id)

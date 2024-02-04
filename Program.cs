@@ -22,7 +22,7 @@ builder.Services.AddDbContext<SecondDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("SecondConnection"))
 );
 
-//ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options => //CookieAuthenticationOptions

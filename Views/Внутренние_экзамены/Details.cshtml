@@ -1,0 +1,42 @@
+﻿@model WebKursovaya.Models.Внутренние_экзамены
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Внутренние_экзамены</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Дата_внутреннего_экзамена)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Дата_внутреннего_экзамена)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Результат_внутреннего_экзамена)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Результат_внутреннего_экзамена)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Автошкола)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Автошкола.Email_автошколы)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Заявитель)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Заявитель.Имя)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Код_внутреннего_экзамена">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

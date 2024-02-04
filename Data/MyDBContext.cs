@@ -11,6 +11,8 @@ namespace WebKursovaya.Data
         public DbSet<Документы_о_квалификации> Документы_о_Квалификации { get; set; }
         public DbSet<Посещения> Посещения { get; set; }
 
+        public DbSet<TestAS> TestAS { get; set; }
+
         public MyDBContext(DbContextOptions<MyDBContext> options)
             : base(options)
         {
@@ -55,6 +57,9 @@ namespace WebKursovaya.Data
         public DbSet<WebKursovaya.Models.Паспорта>? Паспорта { get; set; }
 
         public DbSet<WebKursovaya.Models.ВУ_Категории_ТС>? ВУ_Категории_ТС { get; set; }
+
+        public DbSet<WebKursovaya.Models.Внутренние_экзамены>? Внутренние_экзамены { get; set; }
+
 
 
 

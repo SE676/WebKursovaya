@@ -10,15 +10,14 @@
         justify-content: center; /* Выравнивание кнопок по центру */
     }
 
-    .btn-container a {
-        width: 200px;
-        margin: 5px; /* Равномерный отступ между кнопками */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-
+        .btn-container a {
+            width: 200px;
+            margin: 5px; /* Равномерный отступ между кнопками */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
 
 </style>
 
@@ -63,34 +62,129 @@
                 <img src="https://forma-odezhda.com/image/data/104/gai.gif">
                 <a href="https://localhost:7136/Account/Login" target="_blank" class="btn btn-primary mt-3">Войти в систему</a>
                 <a href="https://localhost:7136/Form/Index" target="_blank" class="btn btn-primary mt-3">Форма заявления</a>
+                <a href="https://localhost:7136/Test/Index" target="_blank" class="btn btn-primary mt-3">Подача списка</a>
+                <a href="https://localhost:7136/TestAS/Index" target="_blank" class="btn btn-primary mt-3">Список</a>
+                
             </div>
         </div>
     }
 
+  
+
     <div class="btn-container">
         @if (User.Identity.IsAuthenticated)
         {
-            <a href="https://localhost:7136/Автошколы" target="_blank" class="btn btn-primary">Автошколы</a>
-            <a href="https://localhost:7136/Виды_статусов_ВУ" target="_blank" class="btn btn-primary">Статусы ВУ</a>
-            <a href="https://localhost:7136/Виды_статусов_заявлений" target="_blank" class="btn btn-primary">Статусы заявлений</a>
-            <a href="https://localhost:7136/Виды_услуг" target="_blank" class="btn btn-primary">Виды услуг</a>
-            <a href="https://localhost:7136/ВУ" target="_blank" class="btn btn-primary">ВУ</a>
-            <a href="https://localhost:7136/ВУ_Категории_ТС" target="_blank" class="btn btn-primary">ВУ Категории ТС</a>
-            <a href="https://localhost:7136/Документы_о_квалификации" target="_blank" class="btn btn-primary">Документы о квалификации</a>
-            <a href="https://localhost:7136/Должности" target="_blank" class="btn btn-primary">Должности</a>
-            <a href="https://localhost:7136/Запись_на_практический_экзамен" target="_blank" class="btn btn-primary">Запись на практический экзамен</a>
-            <a href="https://localhost:7136/Заявители" target="_blank" class="btn btn-primary">Заявители</a>
-            <a href="https://localhost:7136/Заявления" target="_blank" class="btn btn-primary">Заявления</a>
-            <a href="https://localhost:7136/Категории_ТС" target="_blank" class="btn btn-primary">Категории ТС</a>
-            <a href="https://localhost:7136/Мед_организации" target="_blank" class="btn btn-primary">Медицинские организации</a>
-            <a href="https://localhost:7136/Паспорта" target="_blank" class="btn btn-primary">Паспорта</a>
-            <a href="https://localhost:7136/Полы" target="_blank" class="btn btn-primary">Полы</a>
-            <a href="https://localhost:7136/Сотрудники" target="_blank" class="btn btn-primary">Сотрудники</a>
-            <a href="https://localhost:7136/Справки_уплаты_госпошлины" target="_blank" class="btn btn-primary">Справки уплаты госпошлины</a>
-            <a href="https://localhost:7136/Стоимость_госпошлины" target="_blank" class="btn btn-primary">Стоимость госпошлины</a>
-            <a href="https://localhost:7136/Формы_003_В_у" target="_blank" class="btn btn-primary">Мед. справки</a>
-            <a href="https://localhost:7136/Экзамены" target="_blank" class="btn btn-primary">Экзамены</a>
-            <a href="https://localhost:7136/Посещения" target="_blank" class="btn btn-primary">Посещения</a>
+            var roleClaim = User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role");
+            string role = roleClaim != null ? roleClaim.Value : "";
+
+            @if (role == "staff_member")
+            {
+                <a href="https://localhost:7136/Автошколы" target="_blank" class="btn btn-primary">Автошколы</a>
+                <a href="https://localhost:7136/Виды_статусов_ВУ" target="_blank" class="btn btn-primary">Статусы ВУ</a>
+                <a href="https://localhost:7136/Виды_статусов_заявлений" target="_blank" class="btn btn-primary">Статусы заявлений</a>
+                <a href="https://localhost:7136/Виды_услуг" target="_blank" class="btn btn-primary">Виды услуг</a>
+                <a href="https://localhost:7136/ВУ" target="_blank" class="btn btn-primary">ВУ</a>
+                <a href="https://localhost:7136/ВУ_Категории_ТС" target="_blank" class="btn btn-primary">ВУ Категории ТС</a>
+                <a href="https://localhost:7136/Документы_о_квалификации" target="_blank" class="btn btn-primary">Документы о квалификации</a>
+                <a href="https://localhost:7136/Запись_на_практический_экзамен" target="_blank" class="btn btn-primary">Запись на практический экзамен</a>
+                <a href="https://localhost:7136/Заявители" target="_blank" class="btn btn-primary">Заявители</a>
+                <a href="https://localhost:7136/Заявления" target="_blank" class="btn btn-primary">Заявления</a>
+                <a href="https://localhost:7136/Категории_ТС" target="_blank" class="btn btn-primary">Категории ТС</a>
+                <a href="https://localhost:7136/Мед_организации" target="_blank" class="btn btn-primary">Медицинские организации</a>
+                <a href="https://localhost:7136/Паспорта" target="_blank" class="btn btn-primary">Паспорта</a>
+                <a href="https://localhost:7136/Полы" target="_blank" class="btn btn-primary">Полы</a>
+                <a href="https://localhost:7136/Справки_уплаты_госпошлины" target="_blank" class="btn btn-primary">Справки уплаты госпошлины</a>
+                <a href="https://localhost:7136/Стоимость_госпошлины" target="_blank" class="btn btn-primary">Стоимость госпошлины</a>
+                <a href="https://localhost:7136/Формы_003_В_у" target="_blank" class="btn btn-primary">Мед. справки</a>
+                <a href="https://localhost:7136/Экзамены" target="_blank" class="btn btn-primary">Экзамены</a>
+                <a href="https://localhost:7136/Посещения" target="_blank" class="btn btn-primary">Посещения</a>
+            }
+            else if (role == "leader")
+            {
+                <a href="https://localhost:7136/Автошколы" target="_blank" class="btn btn-primary">Автошколы</a>
+                <a href="https://localhost:7136/Виды_статусов_ВУ" target="_blank" class="btn btn-primary">Статусы ВУ</a>
+                <a href="https://localhost:7136/Виды_статусов_заявлений" target="_blank" class="btn btn-primary">Статусы заявлений</a>
+                <a href="https://localhost:7136/Виды_услуг" target="_blank" class="btn btn-primary">Виды услуг</a>
+                <a href="https://localhost:7136/ВУ" target="_blank" class="btn btn-primary">ВУ</a>
+                <a href="https://localhost:7136/ВУ_Категории_ТС" target="_blank" class="btn btn-primary">ВУ Категории ТС</a>
+                <a href="https://localhost:7136/Документы_о_квалификации" target="_blank" class="btn btn-primary">Документы о квалификации</a>
+                <a href="https://localhost:7136/Должности" target="_blank" class="btn btn-primary">Должности</a>
+                <a href="https://localhost:7136/Запись_на_практический_экзамен" target="_blank" class="btn btn-primary">Запись на практический экзамен</a>
+                <a href="https://localhost:7136/Заявители" target="_blank" class="btn btn-primary">Заявители</a>
+                <a href="https://localhost:7136/Заявления" target="_blank" class="btn btn-primary">Заявления</a>
+                <a href="https://localhost:7136/Категории_ТС" target="_blank" class="btn btn-primary">Категории ТС</a>
+                <a href="https://localhost:7136/Мед_организации" target="_blank" class="btn btn-primary">Медицинские организации</a>
+                <a href="https://localhost:7136/Паспорта" target="_blank" class="btn btn-primary">Паспорта</a>
+                <a href="https://localhost:7136/Сотрудники" target="_blank" class="btn btn-primary">Сотрудники</a>
+                <a href="https://localhost:7136/Справки_уплаты_госпошлины" target="_blank" class="btn btn-primary">Справки уплаты госпошлины</a>
+                <a href="https://localhost:7136/Стоимость_госпошлины" target="_blank" class="btn btn-primary">Стоимость госпошлины</a>
+                <a href="https://localhost:7136/Формы_003_В_у" target="_blank" class="btn btn-primary">Мед. справки</a>
+                <a href="https://localhost:7136/Экзамены" target="_blank" class="btn btn-primary">Экзамены</a>
+            }
+            else if (role == "fd")
+            {
+
+                <a href="https://localhost:7136/Виды_услуг" target="_blank" class="btn btn-primary">Виды услуг</a>
+
+                <a href="https://localhost:7136/Должности" target="_blank" class="btn btn-primary">Должности</a>
+
+                <a href="https://localhost:7136/Заявители" target="_blank" class="btn btn-primary">Заявители</a>
+                <a href="https://localhost:7136/Заявления" target="_blank" class="btn btn-primary">Заявления</a>
+
+                <a href="https://localhost:7136/Справки_уплаты_госпошлины" target="_blank" class="btn btn-primary">Справки уплаты госпошлины</a>
+                <a href="https://localhost:7136/Стоимость_госпошлины" target="_blank" class="btn btn-primary">Стоимость госпошлины</a>
+
+            }
+            else if (role == "examiner")
+            {
+                <a href="https://localhost:7136/Автошколы" target="_blank" class="btn btn-primary">Автошколы</a>
+                <a href="https://localhost:7136/Виды_статусов_ВУ" target="_blank" class="btn btn-primary">Статусы ВУ</a>
+                
+                <a href="https://localhost:7136/Виды_услуг" target="_blank" class="btn btn-primary">Виды услуг</a>
+                <a href="https://localhost:7136/ВУ" target="_blank" class="btn btn-primary">ВУ</a>
+                <a href="https://localhost:7136/ВУ_Категории_ТС" target="_blank" class="btn btn-primary">ВУ Категории ТС</a>
+                <a href="https://localhost:7136/Документы_о_квалификации" target="_blank" class="btn btn-primary">Документы о квалификации</a>
+
+                <a href="https://localhost:7136/Запись_на_практический_экзамен" target="_blank" class="btn btn-primary">Запись на практический экзамен</a>
+                <a href="https://localhost:7136/Заявители" target="_blank" class="btn btn-primary">Заявители</a>
+                <a href="https://localhost:7136/Заявления" target="_blank" class="btn btn-primary">Заявления</a>
+                <a href="https://localhost:7136/Категории_ТС" target="_blank" class="btn btn-primary">Категории ТС</a>
+                <a href="https://localhost:7136/Мед_организации" target="_blank" class="btn btn-primary">Медицинские организации</a>
+                <a href="https://localhost:7136/Паспорта" target="_blank" class="btn btn-primary">Паспорта</a>
+            
+                <a href="https://localhost:7136/Справки_уплаты_госпошлины" target="_blank" class="btn btn-primary">Справки уплаты госпошлины</a>
+                <a href="https://localhost:7136/Стоимость_госпошлины" target="_blank" class="btn btn-primary">Стоимость госпошлины</a>
+
+                <a href="https://localhost:7136/Экзамены" target="_blank" class="btn btn-primary">Экзамены</a>
+
+            }
+            else if (role == "admin")
+            {
+                <a href="https://localhost:7136/Автошколы" target="_blank" class="btn btn-primary">Автошколы</a>
+                <a href="https://localhost:7136/Виды_статусов_ВУ" target="_blank" class="btn btn-primary">Статусы ВУ</a>
+                <a href="https://localhost:7136/Виды_статусов_заявлений" target="_blank" class="btn btn-primary">Статусы заявлений</a>
+                <a href="https://localhost:7136/Виды_услуг" target="_blank" class="btn btn-primary">Виды услуг</a>
+                <a href="https://localhost:7136/ВУ" target="_blank" class="btn btn-primary">ВУ</a>
+                <a href="https://localhost:7136/ВУ_Категории_ТС" target="_blank" class="btn btn-primary">ВУ Категории ТС</a>
+                <a href="https://localhost:7136/Документы_о_квалификации" target="_blank" class="btn btn-primary">Документы о квалификации</a>
+                <a href="https://localhost:7136/Должности" target="_blank" class="btn btn-primary">Должности</a>
+                <a href="https://localhost:7136/Запись_на_практический_экзамен" target="_blank" class="btn btn-primary">Запись на практический экзамен</a>
+                <a href="https://localhost:7136/Заявители" target="_blank" class="btn btn-primary">Заявители</a>
+                <a href="https://localhost:7136/Заявления" target="_blank" class="btn btn-primary">Заявления</a>
+                <a href="https://localhost:7136/Категории_ТС" target="_blank" class="btn btn-primary">Категории ТС</a>
+                <a href="https://localhost:7136/Мед_организации" target="_blank" class="btn btn-primary">Медицинские организации</a>
+                <a href="https://localhost:7136/Паспорта" target="_blank" class="btn btn-primary">Паспорта</a>
+                <a href="https://localhost:7136/Полы" target="_blank" class="btn btn-primary">Полы</a>
+                <a href="https://localhost:7136/Сотрудники" target="_blank" class="btn btn-primary">Сотрудники</a>
+                <a href="https://localhost:7136/Справки_уплаты_госпошлины" target="_blank" class="btn btn-primary">Справки уплаты госпошлины</a>
+                <a href="https://localhost:7136/Стоимость_госпошлины" target="_blank" class="btn btn-primary">Стоимость госпошлины</a>
+                <a href="https://localhost:7136/Формы_003_В_у" target="_blank" class="btn btn-primary">Мед. справки</a>
+                <a href="https://localhost:7136/Экзамены" target="_blank" class="btn btn-primary">Экзамены</a>
+                <a href="https://localhost:7136/Посещения" target="_blank" class="btn btn-primary">Посещения</a>
+                <a href="https://localhost:7136/Внутренние_экзамены" target="_blank" class="btn btn-primary">Внутренние экзамены</a>
+                
+                
+            }
         }
     </div>
 </div>

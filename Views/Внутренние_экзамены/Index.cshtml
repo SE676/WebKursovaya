@@ -1,0 +1,53 @@
+﻿@model IEnumerable<WebKursovaya.Models.Внутренние_экзамены>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Дата_внутреннего_экзамена)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Результат_внутреннего_экзамена)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Автошкола)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Заявитель)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Дата_внутреннего_экзамена)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Результат_внутреннего_экзамена)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.АШ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ЗаявительФИО)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Код_внутреннего_экзамена">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Код_внутреннего_экзамена">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Код_внутреннего_экзамена">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,4 +1,6 @@
-﻿namespace WebKursovaya.Models
+﻿using Newtonsoft.Json;
+
+namespace WebKursovaya.Models
 {
     public class AuditService: IAuditService
     {
@@ -16,12 +18,20 @@
                 Действие = action,
                 Таблица = tableName,
                 Дата = DateTime.Now,
-                Роль = userRole
+                Роль = userRole,
+                
             };
 
             _dbContext.Logs.Add(auditLog);
             _dbContext.SaveChanges();
         }
+
+
     }
+
+
+
+    
+
 }
 
